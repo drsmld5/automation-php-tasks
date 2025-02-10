@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Test Suite">
+    <test name="LoginTests">
+        <classes>
+            <class name="testautomation.LoginTests"/>
+        </classes>
+    </test>
+    <test name="RegisterTests">
+        <classes>
+            <class name="testautomation.RegisterTests"/>
+        </classes>
+    </test>
+    <test name="DashboardTests">
+        <classes>
+            <class name="testautomation.DashboardTests"/>
+        </classes>
+    </test>
+</suite>
