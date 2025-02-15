@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name="Test Suite">
+<suite name="Regression Tests">
+    <test name="NavBarTests">
+        <classes>
+            <class name="testautomation.NavBarTests"/>
+        </classes>
+    </test>
     <test name="LoginTests">
         <classes>
             <class name="testautomation.LoginTests"/>

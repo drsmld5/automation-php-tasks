@@ -69,7 +69,7 @@ public class LoginTests {
         Assert.assertTrue(forgotPasswordPage.checkNavBarHeaderExists());
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDown() {
         DriverManager.quitDriver();
     }

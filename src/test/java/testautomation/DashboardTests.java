@@ -69,6 +69,37 @@ public class DashboardTests {
         Assert.assertEquals(dashboardPage.getFirstStartTaskTitle(), "Test", "Incorrect task title");
     }
 
+    @Test
+    public void testChangeLanguageToRomaian() {
+        Map<String, String> userDetailsMap = AutomationUtils.registerNewUserAndLogin(driver);
+        DashboardPage dashboardPage = new DashboardPage(driver);
+
+
+        String languageButtonText = dashboardPage.getToggleLanguageChangeButton().getText();
+        if (languageButtonText.contains("Romanian")) {
+            dashboardPage.clickToggleLanguageChangeButton();
+        }
+        Assert.assertEquals(dashboardPage.getWaitingColumnTitle(), "În Așteptare", "Unexpected language");
+        Assert.assertEquals(dashboardPage.getProgressColumnTitle(), "În Progres", "Unexpected language");
+        Assert.assertEquals(dashboardPage.getDoneColumnTitle(), "Finalizate", "Unexpected language");
+        Assert.assertTrue(dashboardPage.getToggleLanguageChangeButton().getText().contains("Engleză"), "'" + dashboardPage.getToggleLanguageChangeButton().getText() + "' does not contain 'Engleză'");
+    }
+
+    @Test
+    public void testChangeLanguageToEnglish() {
+        Map<String, String> userDetailsMap = AutomationUtils.registerNewUserAndLogin(driver);
+        DashboardPage dashboardPage = new DashboardPage(driver);
+
+        String languageButtonText = dashboardPage.getToggleLanguageChangeButton().getText();
+        if (!languageButtonText.contains("Romanian")) {
+            dashboardPage.clickToggleLanguageChangeButton();
+        }
+        Assert.assertEquals(dashboardPage.getWaitingColumnTitle(), "Pending", "Unexpected language");
+        Assert.assertEquals(dashboardPage.getProgressColumnTitle(), "In Progress", "Unexpected language");
+        Assert.assertEquals(dashboardPage.getDoneColumnTitle(), "Completed", "Unexpected language");
+        Assert.assertTrue(dashboardPage.getToggleLanguageChangeButton().getText().contains("Romanian"));
+    }
+
     @AfterMethod
     public void tearDown() {
         DriverManager.quitDriver();

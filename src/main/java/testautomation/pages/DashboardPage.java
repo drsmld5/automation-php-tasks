@@ -21,9 +21,36 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//div/a[@href='add_task.php']")
     private WebElement addTaskButton;
 
+    @FindBy(name = "toggle_language")
+    private WebElement toggleLanguageChangeButton;
+
 
     public DashboardPage(WebDriver driver) {
         super(driver);
+    }
+
+    public WebElement getColumnsContainer() {
+        return columnsContainer;
+    }
+
+    public WebElement getWaitingColumn() {
+        return waitingColumn;
+    }
+
+    public WebElement getInProgressColumn() {
+        return inProgressColumn;
+    }
+
+    public WebElement getDoneColumn() {
+        return doneColumn;
+    }
+
+    public WebElement getAddTaskButton() {
+        return addTaskButton;
+    }
+
+    public WebElement getToggleLanguageChangeButton() {
+        return toggleLanguageChangeButton;
     }
 
     public String getWaitingColumnTitle() {
@@ -55,5 +82,9 @@ public class DashboardPage extends BasePage {
 
     public String getFirstStartTaskTitle() {
         return waitingColumn.findElement(By.className("card-body")).findElement(By.tagName("h6")).getText();
+    }
+
+    public void clickToggleLanguageChangeButton() {
+        click(toggleLanguageChangeButton);
     }
 }

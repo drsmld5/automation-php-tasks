@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import testautomation.utils.NavBar;
 
 import java.time.Duration;
 
@@ -16,13 +17,17 @@ public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    @FindBy(css = "nav.navbar")
-    private WebElement navBarHeader;
+    private NavBar navBarHeader;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        this.navBarHeader = new NavBar(driver);
         PageFactory.initElements(driver, this);
+    }
+
+    public NavBar getNavBarHeader() {
+        return navBarHeader;
     }
 
     public void click(WebElement element) {
@@ -56,12 +61,25 @@ public class BasePage {
 
     public boolean checkNavBarHeaderExists() {
         try {
-            waitForElementToBeVisible(navBarHeader);
+            waitForElementToBeVisible(navBarHeader.getNavBarContainer());
         } catch (TimeoutException e) {
             e.printStackTrace();
             return false;
         }
-        return navBarHeader.isDisplayed();
+        if (navBarHeader.getNavBarContainer() == null) {
+            return false;
+        }
+        return navBarHeader.getNavBarContainer().isDisplayed();
+    }
+
+    public boolean isElementVisible(WebElement element) {
+        try {
+            waitForElementToBeVisible(element);
+        } catch (TimeoutException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return element.isDisplayed();
     }
 
 }
