@@ -2,7 +2,6 @@ package testautomation;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,7 +10,6 @@ import testautomation.pages.RegisterPage;
 import testautomation.utils.Constants;
 import testautomation.utils.DriverManager;
 
-import java.util.Random;
 import java.util.UUID;
 
 public class RegisterTests {

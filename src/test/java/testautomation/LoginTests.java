@@ -1,7 +1,6 @@
 package testautomation;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import testautomation.pages.ForgotPasswordPage;
 import testautomation.pages.LoginPage;
 import testautomation.utils.Constants;
